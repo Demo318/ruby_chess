@@ -3,7 +3,6 @@ require 'rspec'
 require_relative '../lib/board_space.rb'
 
 describe BoardSpace do
-
   describe '.initialize' do
     context 'when passed x and y coordinates' do
       before do 
@@ -12,6 +11,7 @@ describe BoardSpace do
       end
       it { expect(@this_space.coordinates).to eq([0, 0]) }
       it { expect(@that_space.coordinates).to eq([4, 4]) }
+      it { expect(@this_space.piece).to eq(nil) }
     end
 
     context 'when passed not adjacent spaces' do
@@ -39,6 +39,16 @@ describe BoardSpace do
       it { expect(@space_with_right.move_right.coordinates).to eq([5, 4]) }
       it { expect(@space_with_down.move_down.coordinates).to eq([4, 3]) }
       it { expect(@space_with_left.move_left.coordinates).to eq([3, 4]) }
+    end
+  end
+
+  describe '@piece' do
+    context 'when assigned a piece variable' do
+      before do
+        @this_space = BoardSpace.new(0, 1)
+        @this_space.piece = 'pretend this is a knight'
+      end
+      it { expect(@this_space.piece).to eq('pretend this is a knight') }
     end
   end
 end

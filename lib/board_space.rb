@@ -2,6 +2,8 @@
 # Each space knows its own coordinates, what piece is on it,
 # and which spaces are adjacent to it.
 class BoardSpace
+  attr_accessor :piece
+
   attr_reader :coordinates, :move_up, :move_right,
               :move_down, :move_left
 
@@ -11,5 +13,6 @@ class BoardSpace
     @move_right = adjacent_spaces[1]
     @move_down = adjacent_spaces[2]
     @move_left = adjacent_spaces[3]
+    @piece = nil
   end
 end
