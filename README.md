@@ -7,4 +7,6 @@ The goal of this project is to create a version of Chess that is playable by two
 
 To execute the program: 1) Download the repository, 2) In the Command Line, navigate to the repository's home directory, 3) Enter `ruby play_chess.rb`.
 
+To run tests: 1) Navigate to repository's home directory, 2) Enter `rake` in the command line.
+
 Built using Ruby v.2.3.3
