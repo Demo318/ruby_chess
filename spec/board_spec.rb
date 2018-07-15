@@ -37,9 +37,7 @@ describe Board do
     context 'when board properly set' do
       before do
         @my_board = Board.new
-        puts 'new board'
-        @my_board.set_pieces
-        puts 'pieces set'
+        @my_board.place_pieces
 
         @team_one_pieces = []
         8.times do |x|
@@ -48,7 +46,6 @@ describe Board do
         8.times do |x|
           @team_one_pieces << @my_board.find_space(x, 1).piece.move_rules_name
         end
-        puts 'looked for team one'
 
         @team_two_pieces = []
         8.times do |x|
@@ -57,13 +54,11 @@ describe Board do
         8.times do |x|
           @team_two_pieces << @my_board.find_space(7 - x, 6).piece.move_rules_name
         end
-        puts 'looked for team two'
 
         @correct_pieces = %w[rook knight bishop queen
-                            king bishop knight rook
-                            pawn pawn pawn pawn
-                            pawn pawn pawn pawn]
-        puts 'got to the end of "before"'
+                             king bishop knight rook
+                             pawn pawn pawn pawn
+                             pawn pawn pawn pawn]
       end
 
       it { expect(@team_one_pieces).to eq(@correct_pieces) }
