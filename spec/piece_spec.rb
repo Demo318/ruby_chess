@@ -47,7 +47,7 @@ describe Piece do
       before do
         @this_piece = Piece.new(1, 'queen')
       end
-      it { expect(@this_piece.move_rules_name).to eq('qyeen') }
+      it { expect(@this_piece.move_rules_name).to eq('queen') }
     end
   end
 end
