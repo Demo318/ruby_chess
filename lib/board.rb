@@ -1,4 +1,5 @@
 require_relative 'board_space.rb'
+require_relative 'piece.rb'
 
 # An instance of Board is a graph of BoardSpace objects. These
 # are interrelated to one another and are most fundamentally accessed
@@ -19,10 +20,34 @@ class Board
   end
 
   def set_pieces
-    nil
+    piece_names = %w[rook knight bishop queen
+                     king bishop knight rook
+                     pawn pawn pawn pawn
+                     pawn pawn pawn pawn]
+    set_team_one(piece_names)
+    set_team_two(piece_names)
   end
 
   private
+
+  def set_team_one(pieces)
+    set_row(0, pieces[0..7], 1)
+    set_row(1, pieces[8..15], 1)
+  end
+
+  def set_team_two(pieces)
+    set_row(7, pieces[0..7].reverse, 2)
+    set_row(6, pieces[8..15], 2)
+  end
+
+  def set_row(y_coord, pieces_arr, team_num)
+    space = find_space(0, y_coord)
+    pieces_arr.length.times do
+      space.piece = Piece.new(team_num, piece_name)
+      space = space.move_right
+    end
+
+  end
 
   def find_space_y_coord(coord, space)
     loop do

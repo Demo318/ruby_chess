@@ -34,35 +34,40 @@ describe Board do
   end
 
   describe '#set_pieces' do
-    before do
-      @my_board = Board.new
-      @my_board.set_pieces
+    context 'when board properly set' do
+      before do
+        @my_board = Board.new
+        puts 'new board'
+        @my_board.set_pieces
+        puts 'pieces set'
 
-      @team_one_pieces = []
-      8.times do |x|
-        @team_one_pieces << @my_board.find_space(x, 0).piece.move_rules_name
-      end
-      8.times do |x|
-        @team_one_pieces << @my_board.find_space(x, 1).piece.move_rules_name
-      end
+        @team_one_pieces = []
+        8.times do |x|
+          @team_one_pieces << @my_board.find_space(x, 0).piece.move_rules_name
+        end
+        8.times do |x|
+          @team_one_pieces << @my_board.find_space(x, 1).piece.move_rules_name
+        end
+        puts 'looked for team one'
 
-      @team_two_pieces = []
-      8.times do |x|
-        @team_two_pieces << @my_board.find_space(7 - x, 7).piece.move_rules_name
-      end
-      8.times do |x|
-        @team_two_pieces << @my_board.find_space(7 - x, 6).piece.move_rules_name
-      end
+        @team_two_pieces = []
+        8.times do |x|
+          @team_two_pieces << @my_board.find_space(7 - x, 7).piece.move_rules_name
+        end
+        8.times do |x|
+          @team_two_pieces << @my_board.find_space(7 - x, 6).piece.move_rules_name
+        end
+        puts 'looked for team two'
 
-      @correct_pieces = %w[rook knight bishop queen
+        @correct_pieces = %w[rook knight bishop queen
                             king bishop knight rook
                             pawn pawn pawn pawn
                             pawn pawn pawn pawn]
-    end
-    context 'when board properly set' do
+        puts 'got to the end of "before"'
+      end
+
       it { expect(@team_one_pieces).to eq(@correct_pieces) }
       it { expect(@team_two_pieces).to eq(@correct_pieces) }
     end
   end
-
 end
