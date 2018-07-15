@@ -18,6 +18,10 @@ class Board
     space
   end
 
+  def set_pieces
+    nil
+  end
+
   private
 
   def find_space_y_coord(coord, space)
