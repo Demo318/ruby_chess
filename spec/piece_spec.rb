@@ -63,6 +63,6 @@ describe Piece do
         end
       end
     end
-    it { expect(@test_pices).to eq(@drawn_pieces) }
+    it { expect(@test_pieces).to eq(@drawn_pieces) }
   end
 end
