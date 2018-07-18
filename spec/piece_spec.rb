@@ -50,4 +50,19 @@ describe Piece do
       it { expect(@this_piece.move_rules_name).to eq('queen') }
     end
   end
+
+  describe '#draw_piece' do
+    before do
+      @drawn_pieces = ['♔', '♕', '♖', '♗', '♘', '♙', '♚', '♛', '♜', '♝', '♞', '♟']
+      @test_pieces = []
+      piece_names = %w[king queen rook bishop knight pawn]
+      2.times do |team_num|
+        piece_names.each do |piece_name|
+          temp_piece = Piece.new(team_num + 1, piece_name)
+          @test_pieces << temp_piece.draw_piece
+        end
+      end
+    end
+    it { expect(@test_pices).to eq(@drawn_pieces) }
+  end
 end
