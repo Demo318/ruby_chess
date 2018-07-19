@@ -14,4 +14,36 @@ describe Bishop do
     end
   end
 
+  describe '#find_available_moves' do
+    before do
+      @my_board = Board.new
+      @my_bishop = Piece.new('1', 'bishop')
+      @my_bishop_space = @my_board.find_space(4, 4)
+      @my_bishop_space.piece = @my_bishop
+    end
+    context 'when the board is empty' do
+      # place piece in middle of the board, confirm it returns
+      # array of all appropriate moves.
+      it do
+        expect(@my_bishop.find_available_moves(@my_bishop_space)).to eq(
+          [[5, 5], [6, 6], [7, 7], [5, 3],
+           [6, 2], [7, 1], [3, 3], [2, 2],
+           [1, 1], [0, 0], [3, 5], [2, 6], [1, 7]]
+        )
+      end
+    end
+
+    context 'when team member blocking' do
+      # piece cannot move through a team member. Should
+      # return available options up until that friendly held space.
+    end
+
+    context 'when enemy blocking' do
+      # bishop can capture enemy piece. The enemy-occupied space
+      # is returned as a viable option, but the spaces after it
+      # are not.
+    end
+
+  end
+
 end
