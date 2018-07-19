@@ -4,4 +4,6 @@ module Bishop
     'bishop'
   end
 
+  
+
 end
