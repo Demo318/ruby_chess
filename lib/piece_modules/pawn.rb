@@ -4,5 +4,8 @@ module Pawn
     'pawn'
   end
 
+  def find_available_moves
+    nil
+  end
 
 end
