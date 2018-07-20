@@ -31,6 +31,7 @@ module Bishop
         break if space.piece.team == @team
       end
       available_arr << space.coordinates
+      break unless space.piece.nil?
     end
     available_arr
   end
