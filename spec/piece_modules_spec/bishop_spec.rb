@@ -45,9 +45,6 @@ describe Bishop do
     end
 
     context 'when enemy blocking' do
-      # bishop can capture enemy piece. The enemy-occupied space
-      # is returned as a viable option, but the spaces after it
-      # are not.
       before do
         @my_board.find_space(6, 6).piece = Piece.new(2, 'pawn')
         @my_board.find_space(2, 2).piece = Piece.new(2, 'pawn')
