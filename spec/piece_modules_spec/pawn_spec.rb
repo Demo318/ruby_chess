@@ -89,6 +89,11 @@ describe Pawn do
         end
         it { expect().to eq() }
       end
+
+      context 'when at edge of board' do
+        # make sure nothing bad happens if a pawn is at the left or right
+        # edge of the board.
+      end
     end
   end
 
