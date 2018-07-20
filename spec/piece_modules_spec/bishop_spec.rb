@@ -32,8 +32,6 @@ describe Bishop do
     end
 
     context 'when team member blocking' do
-      # piece cannot move through a team member. Should
-      # return available options up until that friendly held space.
       before do
         @my_board.find_space(6, 6).piece = Piece.new(1, 'pawn')
         @my_board.find_space(2, 2).piece = Piece.new(1, 'pawn')
@@ -50,8 +48,17 @@ describe Bishop do
       # bishop can capture enemy piece. The enemy-occupied space
       # is returned as a viable option, but the spaces after it
       # are not.
+      before do
+        @my_board.find_space(6, 6).piece = Piece.new(2, 'pawn')
+        @my_board.find_space(2, 2).piece = Piece.new(2, 'pawn')
+      end
+      it do
+        expect(@my_bishop.find_available_moves(@my_bishop_space)).to eq(
+          [[5, 5], [6, 6], [5, 3],
+           [6, 2], [7, 1], [3, 3], [2, 2],
+           [3, 5], [2, 6], [1, 7]]
+        )
+      end
     end
-
   end
-
 end
