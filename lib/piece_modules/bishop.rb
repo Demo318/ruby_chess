@@ -25,14 +25,33 @@ module Bishop
 
   def check_direction(one_direct, two_direct, space, available_arr)
     loop do
-      break if space.send(one_direct).nil? || space.send(one_direct).send(two_direct).nil?
+      break if edge_of_board?(one_direct, two_direct, space)
       space = space.send(one_direct).send(two_direct)
-      unless space.piece.nil?
-        break if space.piece.team == @team
-      end
+      break if team_member_occupied?(space)
       available_arr << space.coordinates
-      break unless space.piece.nil?
+      break if enemy_occupied?(space)
     end
     available_arr
+  end
+
+  def edge_of_board?(direct_one, direct_two, space)
+    if space.send(direct_one).nil?
+      return true
+    elsif space.send(direct_one).send(direct_two).nil?
+      return true
+    end
+    false
+  end
+
+  def enemy_occupied?(space)
+    return true unless space.piece.nil?
+    false
+  end
+
+  def team_member_occupied?(space)
+    unless space.piece.nil?
+      return true if space.piece.team == @team
+    end
+    false
   end
 end
