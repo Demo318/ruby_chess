@@ -31,5 +31,4 @@ module Bishop
     end
     available_arr
   end
-
 end
