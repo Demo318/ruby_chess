@@ -27,6 +27,9 @@ module Bishop
     loop do
       break if space.send(one_direct).nil? || space.send(one_direct).send(two_direct).nil?
       space = space.send(one_direct).send(two_direct)
+      unless space.piece.nil?
+        break if space.piece.team == @team
+      end
       available_arr << space.coordinates
     end
     available_arr
