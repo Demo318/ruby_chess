@@ -18,16 +18,37 @@ describe Pawn do
   describe '#find_available_moves' do
     before do
       @my_board = Board.new
-      @my_pawn = Piece.new(1, 'pawn')
     end
     context 'on first move' do
       before do
-        # put two pawns of each team in proper starting space
+        @team_one_pawn_one_space = @my_board.find_space(1, 1)
+        @team_one_pawn_two_space = @my_board.find_space(5, 1)
+
+        @team_two_pawn_one_space = @my_board.find_space(1, 6)
+        @team_two_pawn_two_space = @my_board.find_space(5, 6)
+
+        @team_one_pawn_one = Piece.new(1, 'pawn')
+        @team_one_pawn_two = Piece.new(1, 'pawn')
+
+        @team_two_pawn_one = Piece.new(2, 'pawn')
+        @team_two_pawn_two = Piece.new(2, 'pawn')
+
+        @team_one_pawn_one_space.piece = @team_one_pawn_one
+        @team_one_pawn_two_space.piece = @team_one_pawn_two
+        @team_two_pawn_one_space.piece = @team_two_pawn_one
+        @team_two_pawn_two_space.piece = @team_two_pawn_two
       end
       #pawn can move two spaces forward on first move.
       context 'when the board is empty' do
         it do
-          expect().to eq([])
+          expect(@team_one_pawn_one.find_available_moves).to eq([[1, 2],
+                                                                 [1, 3]])
+          expect(@team_one_pawn_one.find_available_moves).to eq([[5, 2],
+                                                                 [5, 3]])
+          expect(@team_one_pawn_one.find_available_moves).to eq([[1, 5],
+                                                                 [1, 4]])
+          expect(@team_one_pawn_one.find_available_moves).to eq([[5, 5],
+                                                                 [5, 4]])
         end
       end
 
