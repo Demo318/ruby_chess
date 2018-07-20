@@ -41,14 +41,22 @@ describe Pawn do
       #pawn can move two spaces forward on first move.
       context 'when the board is empty' do
         it do
-          expect(@team_one_pawn_one.find_available_moves).to eq([[1, 2],
-                                                                 [1, 3]])
-          expect(@team_one_pawn_one.find_available_moves).to eq([[5, 2],
-                                                                 [5, 3]])
-          expect(@team_one_pawn_one.find_available_moves).to eq([[1, 5],
-                                                                 [1, 4]])
-          expect(@team_one_pawn_one.find_available_moves).to eq([[5, 5],
-                                                                 [5, 4]])
+          expect(@team_one_pawn_one.find_available_moves(
+                   @team_one_pawn_one_space
+          )).to eq([[1, 2],
+                    [1, 3]])
+          expect(@team_one_pawn_two.find_available_moves(
+                   @team_one_pawn_two_space
+          )).to eq([[5, 2],
+                    [5, 3]])
+          expect(@team_two_pawn_one.find_available_moves(
+                   @team_two_pawn_one_space
+          )).to eq([[1, 5],
+                    [1, 4]])
+          expect(@team_two_pawn_two.find_available_moves(
+                   @team_two_pawn_two_space
+          )).to eq([[5, 5],
+                    [5, 4]])
         end
       end
 
